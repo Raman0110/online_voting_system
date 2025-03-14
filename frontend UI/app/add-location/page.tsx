@@ -69,7 +69,7 @@ const Page = () => {
   const { state } = useSidebar()
 
   return (
-    <div className={`h-[100vh] flex justify-center items-center ${state === "expanded" ? "w-[80vw]" : "w-[99vw]"} `}>
+    <div className={`h-[100vh] flex justify-center items-start ${state === "expanded" ? "w-[80vw]" : "w-[99vw]"} `}>
       <div className="w-full lg:w-[50vw]  bg-white px-6 py-[4rem] shadow-lg rounded-lg border border-[#3E7ADC]">
         <h2 className="text-2xl font-semibold mb-6 text-center text-[#3E7ADC]">Location Form</h2>
         <Form {...form}>

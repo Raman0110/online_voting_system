@@ -19,17 +19,13 @@ const items = [
     url: "/",
     icon: PieChartIcon,
   },
-  {
-    title: "Election Detail",
-    url: "#",
-    icon: BarChart2,
-  },
 ];
 
 export function AppSidebar() {
   const [canditateDropDown, setCanditateDropDown] = useState(false);
   const [locationDropDown, setLocationDropDown] = useState(false);
   const [voterDropDown, setVoterDropDown] = useState(false);
+  const [electionDropDown, setElectionDropDown] = useState(false);
 
   return (
     <Sidebar>
@@ -53,6 +49,34 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  className="cursor-pointer text-[#1E293B] hover:bg-[#E0F2FF] transition duration-300 rounded-lg p-3 flex items-center gap-3"
+                  onClick={() => setElectionDropDown(!electionDropDown)}
+                >
+                  <BarChart2 className="text-[#004AAD]" />
+                  <div className="w-full flex justify-between">
+                    <span className="font-semibold">Election</span>
+                    <ChevronDown size={18} className={`transition-transform duration-300 ${electionDropDown ? "rotate-180" : ""}`} />
+                  </div>
+                </SidebarMenuButton>
+                {electionDropDown && (
+                  <div className="ml-6">
+                    <Link href="declear-election" className="flex items-center gap-3">
+                      <SidebarMenuButton className="hover:bg-[#00A3FF] transition duration-300 cursor-pointer text-white rounded-lg p-2">
+                        <Plus size={18} className="text-[#004AAD]" />
+                        <span className="font-semibold text-[#1E293B]">Declear Election</span>
+                      </SidebarMenuButton>
+                    </Link>
+                    <Link href="election-detail" className="flex items-center gap-3">
+                      <SidebarMenuButton className="hover:bg-[#00A3FF] transition duration-300 cursor-pointer text-white rounded-lg p-2">
+                        <ScanSearch size={18} className="text-[#004AAD]" />
+                        <span className="font-semibold text-[#1E293B]">Election Details</span>
+                      </SidebarMenuButton>
+                    </Link>
+                  </div>
+                )}
+              </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton
                   className="cursor-pointer text-[#1E293B] hover:bg-[#E0F2FF] transition duration-300 rounded-lg p-3 flex items-center gap-3"
@@ -109,8 +133,6 @@ export function AppSidebar() {
                   </div>
                 )}
               </SidebarMenuItem>
-            </SidebarMenu>
-            <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton
                   className="cursor-pointer text-[#1E293B] hover:bg-[#E0F2FF] transition duration-300 rounded-lg p-3 flex items-center gap-3"
